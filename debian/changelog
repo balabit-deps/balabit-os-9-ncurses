@@ -1,3 +1,22 @@
+ncurses (6.3-2ubuntu0.1) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: out-of-bounds read in the convert_strings function
+    - debian/patches/CVE-2022-29458.patch:add a limit-check to guard against
+      corrupt terminfo data.
+    - CVE-2022-29458
+  * SECURITY UPDATE: memory corruption when processing malformed terminfo data
+    entries loaded by setuid/setgid programs
+    - debian/patches/CVE-2023-29491-mitigation-1.patch: fix copy/paste error
+      in configure.in.
+    - debian/patches/CVE-2023-29491-mitigation-2.patch: change the
+      --disable-root-environ configure option behavior.
+    - debian/rules: set --disable-root-environ in configuration options.
+    - debian/libtinfo5.symbols, debian/libtinfo6.symbols: add _nc_env_access
+      to symbols files.
+    - CVE-2023-29491
+
+ -- Camila Camargo de Matos <camila.camargodematos@canonical.com>  Tue, 16 May 2023 15:45:27 -0300
+
 ncurses (6.3-2) unstable; urgency=medium
 
   * Add Breaks on neovim (<< 0.6.0) to ncurses-base (Closes: #999777).
